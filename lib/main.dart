@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:momo_on_clouds/pages/loginPage.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
+ 
+import 'pages/loginPage.dart';
+ 
+void main() => runApp(const MomoApp());
+ 
+class MomoApp extends StatelessWidget {
+  const MomoApp({super.key});
+ 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        textTheme: GoogleFonts.konkhmerSleokchherTextTheme(),
-      ),
+      title: 'Momo on Clouds',
+      theme: ThemeData(useMaterial3: true),
       home: const LoginPage(),
     );
   }
