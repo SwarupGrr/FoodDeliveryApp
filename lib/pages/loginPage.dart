@@ -2,7 +2,7 @@ import 'dart:math' as math;
  
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
- 
+import 'registerPage.dart';
 /// ---------------------------------------------------------------------------
 /// DESIGN TOKENS (measured from the 293 x 638 reference image)
 /// ---------------------------------------------------------------------------
@@ -44,14 +44,14 @@ class LoginPage extends StatelessWidget {
                   height: box.maxHeight,
                   child: Column(
                     children: [
-                      SizedBox(height: 31 * s),
+                      SizedBox(height: 25 * s),
                       _LogoTile(s: s),
                       SizedBox(height: 19 * s),
                       _Title(s: s),
                       SizedBox(height: 12 * s),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 10 * s),
+                          padding: EdgeInsets.symmetric(horizontal: 6 * s),
                           child: _LoginPanel(s: s),
                         ),
                       ),
@@ -104,7 +104,7 @@ class _Title extends StatelessWidget {
       style: TextStyle(
         fontFamily: _titleFont,
         fontFamilyFallback: const ['serif'],
-        fontSize: 30 * s,
+        fontSize: 25 * s,
         height: 1.03,
         fontWeight: FontWeight.w700,
         color: _red,
@@ -116,6 +116,7 @@ class _Title extends StatelessWidget {
 /// ---------------------------------------------------------------------------
 /// RED PANEL
 /// ---------------------------------------------------------------------------
+/// The red panel is a rounded rectangle that runs to the bottom of the screen. It contains the login form and buttons.
 class _LoginPanel extends StatefulWidget {
   const _LoginPanel({required this.s});
   final double s;
@@ -156,12 +157,12 @@ class _LoginPanelState extends State<_LoginPanel> {
     return Container(
       decoration: BoxDecoration(
         color: _red,
-        borderRadius: BorderRadius.vertical(top: Radius.circular(65 * s)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(55 * s)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          SizedBox(height: 37 * s),
+          SizedBox(height: 30 * s),
  
           // Tagline + plate image
           Padding(
@@ -180,8 +181,8 @@ class _LoginPanelState extends State<_LoginPanel> {
                 ),
                 const Spacer(),
                 SizedBox(
-                  width: 90 * s,
-                  height: 74 * s,
+                  width: 100 * s,
+                  height: 87 * s,
                   // ASSET #2: momo on plate with chopsticks (transparent PNG)
                   child: const _AssetOrPlaceholder(
                     path: 'assets/images/momo_plate.png',
@@ -284,7 +285,10 @@ class _LoginPanelState extends State<_LoginPanel> {
           Center(
             child: GestureDetector(
               onTap: () {
-                // TODO: navigate to sign-up
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RegisterPage()),
+                );
               },
               child: Text(
                 'Dont have account\nsign up',
