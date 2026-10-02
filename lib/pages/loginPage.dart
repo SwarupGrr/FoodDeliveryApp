@@ -13,7 +13,7 @@ const Color _cream = Color(0xFFFFF1DC);
 const Color _red = Color(0xFFC30B0B);
 const Color _hintGrey = Color(0xFF8E8E8E);
  
-const String _titleFont = 'DMSerifDisplay'; // see pubspec.yaml
+const String _titleFont = 'DM Serif Display'; // see pubspec.yaml
  
 /// ---------------------------------------------------------------------------
 /// PAGE

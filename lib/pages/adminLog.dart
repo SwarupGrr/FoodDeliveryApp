@@ -2,7 +2,9 @@ import 'dart:math' as math;
  
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'loginPage.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+
 /// ---------------------------------------------------------------------------
 /// DESIGN TOKENS (measured from the 293 x 638 reference image)
 /// ---------------------------------------------------------------------------
@@ -14,12 +16,12 @@ const Color _red = Color(0xFFC30B0B);
 const Color _hintGrey = Color(0xFF8E8E8E);
  
 const String _titleFont = 'DM Serif Display'; // see pubspec.yaml
- 
+
 /// ---------------------------------------------------------------------------
 /// PAGE
 /// ---------------------------------------------------------------------------
-class RegisterPage extends StatelessWidget {
-  const RegisterPage({super.key});
+class AdminLog extends StatelessWidget {
+  const AdminLog({super.key});
  
   @override
   Widget build(BuildContext context) {
@@ -46,12 +48,12 @@ class RegisterPage extends StatelessWidget {
                     children: [
                       SizedBox(height: 25 * s),
                       _LogoTile(s: s),
-                      SizedBox(height: 12 * s),
+                      SizedBox(height: 19 * s),
                       _Title(s: s),
-                      SizedBox(height: 10 * s),
+                      SizedBox(height: 12 * s),
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsets.symmetric(horizontal: 6 * s),
+                          padding: EdgeInsets.symmetric(horizontal: 0 * s),
                           child: _LoginPanel(s: s),
                         ),
                       ),
@@ -77,15 +79,15 @@ class _LogoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 137 * s,
-      height: 129 * s,
-      padding: EdgeInsets.all(8 * s),
+      width: 70 * s,
+      height: 70 * s,
+      padding: EdgeInsets.all(0 * s),
       decoration: BoxDecoration(
         color: _red,
-        borderRadius: BorderRadius.circular(32 * s),
+        borderRadius: BorderRadius.circular(20 * s),
       ),
       // ASSET #1: chef momo mascot (transparent PNG)
-      child: Image.asset('assets/images/momo_logo.png',
+      child: Image.asset('assets/images/ChefMascot.png',
         fit: BoxFit.contain,
       ),
     );
@@ -98,20 +100,64 @@ class _Title extends StatelessWidget {
  
   @override
   Widget build(BuildContext context) {
-    return Text(
-      'momo on\nclouds',
-      textAlign: TextAlign.center,
-      style: TextStyle(
-        fontFamily: _titleFont,
-        fontFamilyFallback: const ['serif'],
-        fontSize: 25 * s,
-        height: 1.03,
-        fontWeight: FontWeight.w700,
-        color: _red,
-      ),
-    );
+    return Column(
+      children:[
+        RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          children: [
+            TextSpan(
+              text: 'momo\n',
+              style: GoogleFonts.getFont(
+                _titleFont,
+                color:Color.fromARGB(255, 0, 0, 0),
+                fontSize: 33 * s,
+                fontWeight: FontWeight.w400,
+                height: 0.7,
+              ),
+            ),
+
+            TextSpan(
+              text: 'on clouds',
+              style: GoogleFonts.getFont(
+                _titleFont,
+                color: Color.fromARGB(255, 0, 0, 0),
+                fontSize: 17 * s,
+                fontStyle: FontStyle.italic,
+                fontWeight: FontWeight.w100,
+                height: 1.2,
+              ),
+            ),
+            
+          ],
+        ),
+        ),
+        SizedBox(height: 5 * s),
+        Container(
+          width: 100 * s,
+          height: 20 * s,
+          alignment: Alignment.center,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            border: Border.all(color: Color.fromARGB(255, 0, 0, 0), width: 0.5 * s),
+            borderRadius: BorderRadius.circular(15 * s),
+          ),
+
+          child: Text(
+            'Admin Panel',
+            style: TextStyle(
+              fontSize: 9 * s,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        SizedBox(height: 50 * s),
+      ],
+    );  
   }
 }
+
+
  
 /// ---------------------------------------------------------------------------
 /// RED PANEL
@@ -128,19 +174,17 @@ class _LoginPanel extends StatefulWidget {
 class _LoginPanelState extends State<_LoginPanel> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
-  final _fNameController = TextEditingController();
-  final _lNameController = TextEditingController();
   bool _obscure = true;
  
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
-    _fNameController.dispose();
-    _lNameController.dispose();
     super.dispose();
   }
  
+  // for fonts
+
   @override
   Widget build(BuildContext context) {
     final s = widget.s;
@@ -167,37 +211,60 @@ class _LoginPanelState extends State<_LoginPanel> {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           SizedBox(height: 30 * s),
- 
-          // Tagline + plate image
+
           Padding(
-            padding: EdgeInsets.only(left: 19 * s, right: 7 * s),
+            padding: EdgeInsets.only(left: 35 * s, right: 7 * s),
             child: Row(
               children: [
-                Text(
-                  'Hot and Fresh,\nDelivered',
-                  textAlign: TextAlign.center,
+                Text(                  
+                  'Restaurant portal',
+                  textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 15 * s,
-                    fontWeight: FontWeight.w700,
-                    height: 1.6,
-                  ),
-                ),
-                const Spacer(),
-                SizedBox(
-                  width: 100 * s,
-                  height: 87 * s,
-                  // ASSET #2: momo on plate with chopsticks (transparent PNG)
-                  child: const _AssetOrPlaceholder(
-                    path: 'assets/images/momo_plate.png',
-                    placeholderIcon: Icons.dinner_dining,
+                    fontSize: 8 * s,
+                    fontWeight: FontWeight.w500,
+                    height: 1,
                   ),
                 ),
               ],
             ),
           ),
  
-          SizedBox(height: 15 * s),
+        
+          // Tagline + plate image
+          Transform.translate(
+            offset: Offset(0, -15 * s),
+            child: Padding(
+                padding: EdgeInsets.only(left: 35 * s, right: 10 * s),
+                child: Row(
+                  children: [
+                    Text(
+                      'Welcome back, \nChef',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20 * s,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w700,
+                        height: 1.6,
+                      ),
+                    ),
+                    const Spacer(),
+                    SizedBox(
+                      width: 103 * s,
+                      height: 95 * s,
+                      // ASSET #2: momo on plate with chopsticks (transparent PNG)
+                      child: const _AssetOrPlaceholder(
+                        path: 'assets/images/ChefMascot.png',
+                        placeholderIcon: Icons.person,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+          ),
+
+          SizedBox(height: 1 * s),
  
           // Form
           Padding(
@@ -205,55 +272,27 @@ class _LoginPanelState extends State<_LoginPanel> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-
-                Text('Enter your First Name', style: labelStyle),
-                SizedBox(height: 1 * s),
+                Text('Admin email', style: labelStyle),
+                SizedBox(height: 4 * s),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 3 * s),
                   child: _PillField(
                     s: s,
                     height: 25,
-                    hint: 'Enter your first name',
-                    controller: _fNameController,
-                    keyboardType: TextInputType.text,
-                  ),
-                ),
-
-                Text('Enter your Last Name', style: labelStyle),
-                SizedBox(height: 1 * s),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 3 * s),
-                  child: _PillField(
-                    s: s,
-                    height: 25,
-                    hint: 'Enter your last name',
-                    controller: _lNameController,
-                    keyboardType: TextInputType.text,
-                  ),
-                ),
-
-                Text('Enter your email', style: labelStyle),
-                SizedBox(height: 1 * s),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 3 * s),
-                  child: _PillField(
-                    s: s,
-                    height: 25,
-                    hint: 'name@gmail.com',
+                    hint: 'chef@momo.com',
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
                   ),
                 ),
-
                 SizedBox(height: 4 * s),
                 Text('Enter your password', style: labelStyle),
-                SizedBox(height: 2 * s),
+                SizedBox(height: 4 * s),
                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 3 * s),
                   child: _PillField(
                     s: s,
                     height: 24,
-                    hint: 'name12343##00',
+                    hint: 'Enter your password',
                     controller: _passwordController,
                     obscureText: _obscure,
                     trailing: GestureDetector(
@@ -287,8 +326,8 @@ class _LoginPanelState extends State<_LoginPanel> {
           // Log in button
           Center(
             child: SizedBox(
-              width: 99 * s,
-              height: 24 * s,
+              width: 204 * s,
+              height: 25 * s,
               child: ElevatedButton(
                 onPressed: () {
                   // TODO: authentication
@@ -302,31 +341,24 @@ class _LoginPanelState extends State<_LoginPanel> {
                     borderRadius: BorderRadius.circular(12 * s),
                   ),
                   textStyle: TextStyle(
-                    fontSize: 8 * s,
+                    fontSize: 12 * s,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                child: const Text('Register'),
+                child: const Text('Log in'),
               ),
             ),
           ),
- 
-          SizedBox(height: 12 * s),
- 
-          // Sign-up prompt
+          SizedBox(height: 10 * s),
+
           Center(
-            child: GestureDetector(
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()),
-                );
-              },
-              child: Text(
-                'Already have account\nlog in',
-                textAlign: TextAlign.center,
-                style: smallBold.copyWith(height: 1.75),
-              ),
+            child: Text('• Only for restaurant staff',
+            style: TextStyle(
+              color: Colors.white.withOpacity(0.92),
+              fontSize: 6 * s,
+              fontWeight: FontWeight.w400,
+              height: 1.25,
+            ),
             ),
           ),
         ],
