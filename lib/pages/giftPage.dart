@@ -8,7 +8,7 @@ class Giftpage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          'Gift Page Page',
+          'Gift Page Page TODO',
           style: TextStyle(fontSize: 60),
         ),
       ),
