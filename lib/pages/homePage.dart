@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'menuLanding.dart';
 import 'feedbackPage.dart';
 import 'giftPage.dart';
+import 'userProfile.dart';
 
 const Color _kBg = Color(0xFFFFF1E4);
 const Color _kPanel = Color(0xFFEFE3D3);
@@ -233,18 +234,34 @@ class _Header extends StatelessWidget {
             ),
           ),
           Column(
-            children: [
-              Container(
-                width: w * 0.11,
-                height: w * 0.11,
-                decoration:
-                    const BoxDecoration(color: _kRed, shape: BoxShape.circle),
-                child: Icon(Icons.person, color: Colors.white, size: w * 0.07),
-              ),
-              SizedBox(height: w * 0.02),
-              Icon(Icons.notifications, color: _kRed, size: w * 0.06),
-            ],
+  children: [
+    GestureDetector(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const ProfilePage(),
           ),
+        );
+      },
+      child: Container(
+        width: w * 0.11,
+        height: w * 0.11,
+        decoration: const BoxDecoration(
+          color: _kRed,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          Icons.person,
+          color: Colors.white,
+          size: w * 0.07,
+        ),
+      ),
+    ),
+
+    SizedBox(height: w * 0.02),
+  ],
+)
         ],
       ),
     );
