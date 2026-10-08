@@ -59,19 +59,16 @@ class _MenuLandingState extends State<MenuLanding> {
 
     return Scaffold(
       backgroundColor: _kBg,
-
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(w * 0.30),
         child: AppBar(
           backgroundColor: _kBg,
           elevation: 0,
           centerTitle: true,
-
           flexibleSpace: SafeArea(
             child: Column(
               children: [
                 _buildCategories(w),
-
                 Align(
                   alignment: Alignment.centerRight,
                   child: Padding(
@@ -92,7 +89,6 @@ class _MenuLandingState extends State<MenuLanding> {
           ),
         ),
       ),
-
       body: Container(
         decoration: const BoxDecoration(
           color: _kBg,
@@ -102,11 +98,9 @@ class _MenuLandingState extends State<MenuLanding> {
             alignment: Alignment.topCenter,
           ),
         ),
-
         child: SafeArea(
           top: false,
           bottom: false,
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -128,13 +122,10 @@ class _MenuLandingState extends State<MenuLanding> {
                   ),
                 ),
               ),
-
               Expanded(
                 child: ListView.builder(
                   padding: EdgeInsets.only(bottom: w * 0.04),
-
                   itemCount: _products.length,
-
                   itemBuilder: (context, i) {
                     return _buildCard(w, _products[i]);
                   },
@@ -144,7 +135,6 @@ class _MenuLandingState extends State<MenuLanding> {
           ),
         ),
       ),
-
       bottomNavigationBar: _buildBottomNav(w),
     );
   }
@@ -160,43 +150,36 @@ class _MenuLandingState extends State<MenuLanding> {
 
           return GestureDetector(
             behavior: HitTestBehavior.opaque,
-
-
-            // below for after all the categories pages are made (TODO)
-
             onTap: () {
-              setState(() {
-                _selectedCategory = i;
-              });
-
+              // IMPORTANT: use push (not pushReplacement)
+              // so the back button on category pages works correctly
               if (i == 0) {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const FastFoodPage()),
                 );
               } else if (i == 1) {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const NonVegPage()),
                 );
               } else if (i == 2) {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const VeganPage()),
                 );
               } else if (i == 3) {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const DessertsPage()),
                 );
               } else if (i == 4) {
-                Navigator.pushReplacement(
+                Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => const DrinksPage()),
                 );
               }
             },
-
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -214,9 +197,7 @@ class _MenuLandingState extends State<MenuLanding> {
                     color: selected ? Colors.white : _kRed,
                   ),
                 ),
-
                 SizedBox(height: w * 0.01),
-
                 Text(
                   c.label,
                   style: TextStyle(
@@ -351,17 +332,13 @@ class _MenuLandingState extends State<MenuLanding> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(items.length, (i) {
               final selected = i == _selectedNav;
-
               final color = selected ? const Color(0xFFFFC94D) : Colors.white;
 
               return Expanded(
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-
                   onTap: () {
-                    if (i == _selectedNav) {
-                      return;
-                    }
+                    if (i == _selectedNav) return;
 
                     setState(() {
                       _selectedNav = i;
@@ -397,7 +374,6 @@ class _MenuLandingState extends State<MenuLanding> {
                       );
                     }
                   },
-
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -406,9 +382,7 @@ class _MenuLandingState extends State<MenuLanding> {
                         color: color,
                         size: w * 0.06,
                       ),
-
                       SizedBox(height: w * 0.004),
-
                       Text(
                         items[i][1] as String,
                         style: TextStyle(

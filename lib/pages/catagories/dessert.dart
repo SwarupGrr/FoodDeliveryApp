@@ -114,7 +114,18 @@ class _DessertsPageState extends State<DessertsPage> {
       child: Row(
         children: [
           GestureDetector(
-            onTap: () => Navigator.maybePop(context),
+            onTap: () {
+              // Safe pop – prevents the "_history.isNotEmpty" crash
+              if (Navigator.canPop(context)) {
+                Navigator.pop(context);
+              } else {
+                // Fallback if stack is empty
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const MenuLanding()),
+                );
+              }
+            },
             child: Container(
               width: w * 0.09,
               height: w * 0.09,
@@ -402,7 +413,7 @@ class _DessertsPageState extends State<DessertsPage> {
     );
   }
 
- Widget _buildBottomNav(double w) {
+  Widget _buildBottomNav(double w) {
     const items = [
       [Icons.star_border, 'Feedback'],
       [Icons.grid_view_rounded, 'Menu'],
@@ -431,17 +442,13 @@ class _DessertsPageState extends State<DessertsPage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: List.generate(items.length, (i) {
               final selected = i == _selectedNav;
-
               final color = selected ? const Color(0xFFFFC94D) : Colors.white;
 
               return Expanded(
                 child: GestureDetector(
                   behavior: HitTestBehavior.opaque,
-
                   onTap: () {
-                    if (i == _selectedNav) {
-                      return;
-                    }
+                    if (i == _selectedNav) return;
 
                     setState(() {
                       _selectedNav = i;
@@ -477,7 +484,6 @@ class _DessertsPageState extends State<DessertsPage> {
                       );
                     }
                   },
-
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
@@ -486,9 +492,7 @@ class _DessertsPageState extends State<DessertsPage> {
                         color: color,
                         size: w * 0.06,
                       ),
-
                       SizedBox(height: w * 0.004),
-
                       Text(
                         items[i][1] as String,
                         style: TextStyle(
