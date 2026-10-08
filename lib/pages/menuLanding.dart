@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'homePage.dart';
 import 'feedbackPage.dart';
-import 'giftPage.dart';
+import 'CartPage.dart';
+import 'catagories/dessert.dart';
 
 const Color _kRed = Color(0xFFC8101A);
 const Color _kDarkRed = Color(0xFFA30D14);
@@ -22,11 +23,11 @@ class _Product {
 }
 
 const List<_Category> _categories = [
-  _Category(Icons.set_meal_outlined, 'Seafood'),
-  _Category(Icons.lunch_dining_outlined, 'Hot dog'),
+  _Category(Icons.fastfood_outlined, 'fast food'),
+  _Category(Icons.set_meal_outlined, 'Non-veg'),
   _Category(Icons.eco_outlined, 'Vegan'),
-  _Category(Icons.icecream_outlined, 'Desserts'),
-  _Category(Icons.rice_bowl_outlined, 'Salads'),
+  _Category(Icons.cake_outlined, 'Desserts'),
+  _Category(Icons.local_drink_outlined, 'Drinks'),
 ];
 
 const List<_Product> _products = [
@@ -151,8 +152,46 @@ class _MenuLandingState extends State<MenuLanding> {
         children: List.generate(_categories.length, (i) {
           final c = _categories[i];
           final selected = i == _selectedCategory;
+
           return GestureDetector(
-            onTap: () => setState(() => _selectedCategory = i),
+            behavior: HitTestBehavior.opaque,
+
+
+            // below for after all the categories pages are made (TODO)
+
+            // onTap: () {
+            //   setState(() {
+            //     _selectedCategory = i;
+            //   });
+
+            //   if (i == 0) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const FastFoodPage()),
+            //     );
+            //   } else if (i == 1) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const NonVegPage()),
+            //     );
+            //   } else if (i == 2) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const VeganPage()),
+            //     );
+            //   } else if (i == 3) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const DessertsPage()),
+            //     );
+            //   } else if (i == 4) {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => const DrinksPage()),
+            //     );
+            //   }
+            // },
+
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -170,7 +209,9 @@ class _MenuLandingState extends State<MenuLanding> {
                     color: selected ? Colors.white : _kRed,
                   ),
                 ),
+
                 SizedBox(height: w * 0.01),
+
                 Text(
                   c.label,
                   style: TextStyle(
@@ -280,82 +321,99 @@ class _MenuLandingState extends State<MenuLanding> {
     const items = [
       [Icons.star_border, 'Feedback'],
       [Icons.grid_view_rounded, 'Menu'],
-      [Icons.home_outlined, 'Home'],
-      [Icons.card_giftcard, 'Gift'],
+      [Icons.home, 'Home'],
+      [Icons.shopping_cart_outlined, 'Cart'],
     ];
 
     return Container(
-      color: _kRed,
-
+      color: _kBg,
+      padding: EdgeInsets.only(
+        left: w * 0.08,
+        right: w * 0.08,
+        top: w * 0.015,
+        bottom: w * 0.025,
+      ),
       child: SafeArea(
         top: false,
-
-        child: Padding(
-          padding: EdgeInsets.symmetric(vertical: w * 0.015),
-
+        child: Container(
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(vertical: w * 0.012),
+          decoration: BoxDecoration(
+            color: _kRed,
+            borderRadius: BorderRadius.circular(50),
+          ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
-
             children: List.generate(items.length, (i) {
               final selected = i == _selectedNav;
 
               final color = selected ? const Color(0xFFFFC94D) : Colors.white;
 
-              return GestureDetector(
-                behavior: HitTestBehavior.opaque,
+              return Expanded(
+                child: GestureDetector(
+                  behavior: HitTestBehavior.opaque,
 
-                onTap: () {
-                  // Do nothing if already on this page
-                  if (i == _selectedNav) {
-                    return;
-                  }
+                  onTap: () {
+                    if (i == _selectedNav) {
+                      return;
+                    }
 
-                  setState(() {
-                    _selectedNav = i;
-                  });
+                    setState(() {
+                      _selectedNav = i;
+                    });
 
-                  if (i == 0) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const FeedbackPage()),
-                    );
-                  } else if (i == 1) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const MenuLanding(),
-                      ),
-                    );
-                  } else if (i == 2) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Homepage()),
-                    );
-                  } else if (i == 3) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const Giftpage()),
-                    );
-                  }
-                },
+                    if (i == 0) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FeedbackPage(),
+                        ),
+                      );
+                    } else if (i == 1) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const MenuLanding(),
+                        ),
+                      );
+                    } else if (i == 2) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Homepage(),
+                        ),
+                      );
+                    } else if (i == 3) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const Cartpage(),
+                        ),
+                      );
+                    }
+                  },
 
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-
-                  children: [
-                    Icon(items[i][0] as IconData, color: color, size: w * 0.06),
-
-                    SizedBox(height: w * 0.004),
-
-                    Text(
-                      items[i][1] as String,
-                      style: TextStyle(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        items[i][0] as IconData,
                         color: color,
-                        fontSize: w * 0.024,
-                        fontWeight: FontWeight.w600,
+                        size: w * 0.06,
                       ),
-                    ),
-                  ],
+
+                      SizedBox(height: w * 0.004),
+
+                      Text(
+                        items[i][1] as String,
+                        style: TextStyle(
+                          color: color,
+                          fontSize: w * 0.024,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),
