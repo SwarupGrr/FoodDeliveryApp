@@ -142,11 +142,15 @@ class _ProfilePageState extends State<ProfilePage> {
               border: Border.all(color: Colors.black87, width: 1),
             ),
             child: ClipOval(
-              child: Image.asset(
-                'assets/images/profile.png',
-                fit: BoxFit.cover,
+              child: Container(
                 width: size,
                 height: size,
+                color: Colors.grey.shade300,
+                child: Icon(
+                  Icons.person,
+                  color: Colors.grey.shade600,
+                  size: size * 0.6,
+                ),
               ),
             ),
           ),

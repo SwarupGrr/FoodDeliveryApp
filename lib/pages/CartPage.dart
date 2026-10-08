@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Giftpage extends StatelessWidget {
-  const Giftpage({super.key});
+class Cartpage extends StatelessWidget {
+  const Cartpage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
         child: Text(
-          'Gift Page Page TODO',
+          'CArt Page Page TODO',
           style: TextStyle(fontSize: 60),
         ),
       ),
