@@ -106,48 +106,48 @@ class _HomepageState extends State<Homepage> {
 
   // below for after all category pages are mafe (TODO)
 
-  // void _openCategory(int index) {
-  //   setState(() {
-  //     _selectedCategory = index;
-  //   });
+  void _openCategory(int index) {
+    setState(() {
+      _selectedCategory = index;
+    });
 
-  //   switch (index) {
-  //     case 0:
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => const FastFoodPage()),
-  //       );
-  //       break;
+    switch (index) {
+      case 0:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const FastFoodPage()),
+        );
+        break;
 
-  //     case 1:
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => const NonVegPage()),
-  //       );
-  //       break;
+      case 1:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const NonVegPage()),
+        );
+        break;
 
-  //     case 2:
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => const VeganPage()),
-  //       );
-  //       break;
+      case 2:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const VeganPage()),
+        );
+        break;
 
-  //     case 3:
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => const DessertsPage()),
-  //       );
-  //       break;
+      case 3:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const DessertsPage()),
+        );
+        break;
 
-  //     case 4:
-  //       Navigator.push(
-  //         context,
-  //         MaterialPageRoute(builder: (context) => const DrinksPage()),
-  //       );
-  //       break;
-  //   }
-  // }
+      case 4:
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => const DrinksPage()),
+        );
+        break;
+    }
+  }
 
   // ============================================================
   // BUILD

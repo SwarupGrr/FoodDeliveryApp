@@ -402,7 +402,7 @@ class _DessertsPageState extends State<DessertsPage> {
     );
   }
 
-  Widget _buildBottomNav(double w) {
+ Widget _buildBottomNav(double w) {
     const items = [
       [Icons.star_border, 'Feedback'],
       [Icons.grid_view_rounded, 'Menu'],
