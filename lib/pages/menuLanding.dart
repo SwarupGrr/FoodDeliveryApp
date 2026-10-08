@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'homePage.dart';
 import 'feedbackPage.dart';
 import 'CartPage.dart';
+
 import 'catagories/dessert.dart';
+import 'catagories/drinks.dart';
+import 'catagories/fastFood.dart';
+import 'catagories/nonVeg.dart';
+import 'catagories/vegan.dart';
 
 const Color _kRed = Color(0xFFC8101A);
 const Color _kDarkRed = Color(0xFFA30D14);
@@ -159,38 +164,38 @@ class _MenuLandingState extends State<MenuLanding> {
 
             // below for after all the categories pages are made (TODO)
 
-            // onTap: () {
-            //   setState(() {
-            //     _selectedCategory = i;
-            //   });
+            onTap: () {
+              setState(() {
+                _selectedCategory = i;
+              });
 
-            //   if (i == 0) {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const FastFoodPage()),
-            //     );
-            //   } else if (i == 1) {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const NonVegPage()),
-            //     );
-            //   } else if (i == 2) {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const VeganPage()),
-            //     );
-            //   } else if (i == 3) {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const DessertsPage()),
-            //     );
-            //   } else if (i == 4) {
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const DrinksPage()),
-            //     );
-            //   }
-            // },
+              if (i == 0) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const FastFoodPage()),
+                );
+              } else if (i == 1) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const NonVegPage()),
+                );
+              } else if (i == 2) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const VeganPage()),
+                );
+              } else if (i == 3) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DessertsPage()),
+                );
+              } else if (i == 4) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const DrinksPage()),
+                );
+              }
+            },
 
             child: Column(
               mainAxisSize: MainAxisSize.min,
