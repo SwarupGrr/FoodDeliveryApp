@@ -10,7 +10,6 @@ const Color _kCard = Colors.white;
 const Color _kRed = Color(0xFFC8101A);
 const Color _kDarkRed = Color(0xFF8E1B1B);
 const Color _kPink = Color(0xFFF9D6DA);
-const Color _kAccent = Color(0xFFFFC94D);
 const Color _kText = Color(0xFF1A1A1A);
 const Color _kGrey = Color(0xFF8A8480);
 

@@ -15,7 +15,6 @@ const Color _kPanel = Color(0xFFEFE3D3);
 const Color _kCard = Color(0xFFFFFAF5);
 const Color _kRed = Color(0xFFC40F0F);
 const Color _kDarkRed = Color(0xFF7A0D14);
-const Color _kAccent = Color(0xFFFFC94D);
 const Color _kText = Color(0xFF2B1A17);
 const Color _kGrey = Color(0xFF8A8480);
 const Color _kDisabled = Color(0xFFB5B0AC);
