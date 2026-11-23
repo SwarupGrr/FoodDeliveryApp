@@ -103,8 +103,6 @@ class _HomepageState extends State<Homepage> {
   // ============================================================
 
 
-  // below for after all category pages are mafe (TODO)
-
   void _openCategory(int index) {
     setState(() {
       _selectedCategory = index;
@@ -621,12 +619,12 @@ class _CategoryRow extends StatelessWidget {
                   height: w * 0.13,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: sel ? _kRed : _kCard,
+                    color: _kCard,
                     border: Border.all(color: _kRed, width: 1),
                   ),
                   child: Icon(
                     c.icon,
-                    color: sel ? Colors.white : _kRed,
+                    color: _kRed,
                     size: w * 0.065,
                   ),
                 ),
