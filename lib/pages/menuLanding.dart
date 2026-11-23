@@ -188,13 +188,13 @@ class _MenuLandingState extends State<MenuLanding> {
                   height: w * 0.13,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: selected ? _kRed : Colors.white,
+                    color: Colors.white,
                     border: Border.all(color: _kRed, width: 1.2),
                   ),
                   child: Icon(
                     c.icon,
                     size: w * 0.065,
-                    color: selected ? Colors.white : _kRed,
+                    color: _kRed,
                   ),
                 ),
                 SizedBox(height: w * 0.01),
