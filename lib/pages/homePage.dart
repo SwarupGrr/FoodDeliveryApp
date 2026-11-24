@@ -3,6 +3,7 @@ import 'menuLanding.dart';
 import 'feedbackPage.dart';
 import 'CartPage.dart';
 import 'userProfile.dart';
+import 'reserveTable.dart';
 
 import 'catagories/dessert.dart';
 import 'catagories/drinks.dart';
@@ -101,7 +102,6 @@ class _HomepageState extends State<Homepage> {
   // ============================================================
   // CATEGORY NAVIGATION
   // ============================================================
-
 
   void _openCategory(int index) {
     setState(() {
@@ -622,11 +622,7 @@ class _CategoryRow extends StatelessWidget {
                     color: _kCard,
                     border: Border.all(color: _kRed, width: 1),
                   ),
-                  child: Icon(
-                    c.icon,
-                    color: _kRed,
-                    size: w * 0.065,
-                  ),
+                  child: Icon(c.icon, color: _kRed, size: w * 0.065),
                 ),
 
                 SizedBox(height: w * 0.01),
@@ -712,7 +708,16 @@ class _ReservationCard extends StatelessWidget {
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ReservePage(),
+                        ),
+                      );
+                    },
+                  child: Text(
                     'Reserve',
                     style: TextStyle(
                       color: Colors.white,
@@ -720,6 +725,7 @@ class _ReservationCard extends StatelessWidget {
                       fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
 
                   SizedBox(width: w * 0.01),
 
