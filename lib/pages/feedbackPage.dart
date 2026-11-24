@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import 'homePage.dart';
 import 'CartPage.dart';
+import 'feedbackSent.dart';
 // TODO: change this to the real file name of your MenuLanding page.
 import 'menuLanding.dart';
 
@@ -347,7 +348,10 @@ class _FeedbackCardState extends State<_FeedbackCard> {
           _SubmitButton(
             s: s,
             onTap: () {
-              // TODO: send _rating and the three controllers' text somewhere
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const FeedbackSentPage()),
+              );
             },
           ),
         ],
