@@ -8,10 +8,12 @@ class FastFoodPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          'FastFoodPage TODO',
+          'FastFoodPage UI design yet to be provided',
           style: TextStyle(fontSize: 60),
         ),
       ),
     );
   }
+
+  
 }
