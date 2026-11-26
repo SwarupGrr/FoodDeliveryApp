@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'adminDashboard.dart';
+
 /// ---------------------------------------------------------------------------
 /// DESIGN TOKENS (measured from the 293 x 638 reference image)
 /// ---------------------------------------------------------------------------
@@ -335,7 +337,7 @@ class _LoginPanelState extends State<_LoginPanel> {
                 height: 25 * s,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: authentication
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const AdminDashboardPage()));
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _cream,
