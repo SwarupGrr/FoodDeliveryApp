@@ -378,7 +378,7 @@ class _Header extends StatelessWidget {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const ProfilePage(),

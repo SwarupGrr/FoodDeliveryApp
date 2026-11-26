@@ -325,7 +325,7 @@ class _LoginPanelState extends State<_LoginPanel> {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const LoginPage(),

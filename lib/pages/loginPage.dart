@@ -3,6 +3,7 @@ import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'registerPage.dart';
+import 'homePage.dart';
 
 /// ---------------------------------------------------------------------------
 /// DESIGN TOKENS (measured from the 293 x 638 reference image)
@@ -52,9 +53,7 @@ class LoginPage extends StatelessWidget {
                       SizedBox(height: 19 * s),
                       _Title(s: s),
                       SizedBox(height: 12 * s),
-                      Expanded(
-                        child: _LoginPanel(s: s),
-                      ),
+                      Expanded(child: _LoginPanel(s: s)),
                     ],
                   ),
                 ),
@@ -85,10 +84,7 @@ class _LogoTile extends StatelessWidget {
         borderRadius: BorderRadius.circular(32 * s),
       ),
       // ASSET #1: chef momo mascot (transparent PNG)
-      child: Image.asset(
-        'assets/images/momo_logo.png',
-        fit: BoxFit.contain,
-      ),
+      child: Image.asset('assets/images/momo_logo.png', fit: BoxFit.contain),
     );
   }
 }
@@ -159,9 +155,7 @@ class _LoginPanelState extends State<_LoginPanel> {
     return Container(
       decoration: BoxDecoration(
         color: _red,
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(55 * s),
-        ),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(55 * s)),
       ),
       child: SingleChildScrollView(
         physics: const ClampingScrollPhysics(),
@@ -265,7 +259,10 @@ class _LoginPanelState extends State<_LoginPanel> {
                 height: 24 * s,
                 child: ElevatedButton(
                   onPressed: () {
-                    // TODO: authentication
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => const Homepage()),
+                    );
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: _cream,
@@ -291,7 +288,7 @@ class _LoginPanelState extends State<_LoginPanel> {
             Center(
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(
+                  Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
                       builder: (context) => const RegisterPage(),
@@ -350,10 +347,7 @@ class _PillField extends StatelessWidget {
             textAlign: TextAlign.center,
             textAlignVertical: TextAlignVertical.center,
             cursorColor: _red,
-            style: TextStyle(
-              fontSize: 9 * s,
-              color: Colors.black87,
-            ),
+            style: TextStyle(fontSize: 9 * s, color: Colors.black87),
             decoration: InputDecoration(
               isDense: true,
               border: InputBorder.none,
@@ -363,16 +357,10 @@ class _PillField extends StatelessWidget {
                 color: _hintGrey,
                 fontWeight: FontWeight.w500,
               ),
-              contentPadding: EdgeInsets.symmetric(
-                horizontal: 26 * s,
-              ),
+              contentPadding: EdgeInsets.symmetric(horizontal: 26 * s),
             ),
           ),
-          if (trailing != null)
-            Positioned(
-              right: 15 * s,
-              child: trailing!,
-            ),
+          if (trailing != null) Positioned(right: 15 * s, child: trailing!),
         ],
       ),
     );
@@ -395,12 +383,8 @@ class _AssetOrPlaceholder extends StatelessWidget {
     return Image.asset(
       path,
       fit: BoxFit.contain,
-      errorBuilder: (_, __, ___) => FittedBox(
-        child: Icon(
-          placeholderIcon,
-          color: _cream,
-        ),
-      ),
+      errorBuilder: (_, __, ___) =>
+          FittedBox(child: Icon(placeholderIcon, color: _cream)),
     );
   }
 }
