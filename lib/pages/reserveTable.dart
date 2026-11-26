@@ -1,5 +1,6 @@
 import 'dart:math' as math;
-import 'homePage.dart';
+import 'reserveConfirm.dart';
+import 'HomePage.dart';
 
 import 'package:flutter/material.dart';
 
@@ -748,7 +749,9 @@ class _ConfirmButton extends StatelessWidget {
         borderRadius: radius,
         child: InkWell(
           borderRadius: radius,
-          onTap: onTap,
+          onTap: () { Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const reserveConfirm()));
+          },
           child: Center(
             child: Text(
               'Confirm Reservation',

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:momo_on_clouds/pages/adminLog.dart';
-import 'package:momo_on_clouds/pages/loginPage.dart';
-import 'package:momo_on_clouds/pages/homePage.dart';
-import 'package:momo_on_clouds/pages/orderConfirmPage.dart';
+import 'package:momo_on_clouds/pages/registerPage.dart';
+
  
 void main() => runApp(const MomoApp());
  
@@ -15,7 +13,7 @@ class MomoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Momo on Clouds',
       theme: ThemeData(useMaterial3: true),
-      home: const LoginPage(),
+      home: const RegisterPage(),
     );
   }
 }
