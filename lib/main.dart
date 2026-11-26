@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+
 import 'package:momo_on_clouds/pages/registerPage.dart';
+import 'package:momo_on_clouds/pages/adminLog.dart';
+
 
  
 void main() => runApp(const MomoApp());
@@ -13,7 +16,7 @@ class MomoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Momo on Clouds',
       theme: ThemeData(useMaterial3: true),
-      home: const RegisterPage(),
+      home: const AdminLog(),
     );
   }
 }
