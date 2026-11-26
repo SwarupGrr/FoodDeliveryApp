@@ -154,27 +154,27 @@ class _MenuLandingState extends State<MenuLanding> {
               // IMPORTANT: use push (not pushReplacement)
               // so the back button on category pages works correctly
               if (i == 0) {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const FastFoodPage()),
                 );
               } else if (i == 1) {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const NonVegPage()),
                 );
               } else if (i == 2) {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const VeganPage()),
                 );
               } else if (i == 3) {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const DessertsPage()),
                 );
               } else if (i == 4) {
-                Navigator.push(
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(builder: (context) => const DrinksPage()),
                 );

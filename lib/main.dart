@@ -15,7 +15,7 @@ class MomoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Momo on Clouds',
       theme: ThemeData(useMaterial3: true),
-      home: const Homepage(),
+      home: const LoginPage(),
     );
   }
 }

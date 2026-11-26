@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'menuLanding.dart';
 import 'homePage.dart';
 import 'feedbackPage.dart';
+import 'checkout.dart';
 
 // Colours of the bottom nav, kept exactly as on your other pages.
 const Color _kBg = Color(0xFFFFF4E3);
@@ -508,7 +509,7 @@ class _CartpageState extends State<Cartpage> {
   Widget _buildCheckout(double w) {
     return GestureDetector(
       onTap: () {
-        // TODO: go to checkout
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const CheckoutPage()));
       },
       child: Container(
         width: double.infinity,
